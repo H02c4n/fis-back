@@ -25,7 +25,8 @@ if not SECRET_KEY:
     else:
         raise ImproperlyConfigured("SECRET_KEY must be set when DEBUG is false.")
 
-ALLOWED_HOSTS = env_list("ALLOWED_HOSTS", "localhost,127.0.0.1" if DEBUG else "")
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com',]
+#env_list("ALLOWED_HOSTS", "localhost,127.0.0.1" if DEBUG else "")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
