@@ -6,12 +6,13 @@ python manage.py collectstatic --no-input
 python manage.py migrate --run-syncdb
 python manage.py generate_slots
 python manage.py seed_cities
-python manage.py shell -c "
-from django.contrib.auth import get_user_model
-User = get_user_model()
-if not User.objects.filter(email='back@fis.se').exists():
-    User.objects.create_superuser(email='back@fis.se', password='deneme12345')
-    print('Superuser created')
-else:
-    print('Superuser already exists')
+python manage.py seed_initial_data
+ppython manage.py shell -c "
+from django.contrib.auth.models import User
+
+User.objects.filter(username='admin').exists() or User.objects.create_superuser(
+    username='admin',
+    email='back@fis.se',
+    password='deneme122345'
+)
 "
