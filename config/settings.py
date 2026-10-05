@@ -77,9 +77,10 @@ TEMPLATES = [
 # PostgreSQL in every real environment (DATABASE_URL=postgres://...).
 # The SQLite fallback exists only so tests/dev can run without a database server.
 DATABASES = {
-    "default": dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}", conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
